@@ -64,38 +64,33 @@ Build::Build(int& rows, int& bricks)
 
 void Build::makeWall()
 {
-	bool com = true;// To altarnate between complet and half brick.
+	bool comLine = true;// To altarnate between make a line using only full brick and other start with half brick.
 	bool hlf = false; // Para restar 1 a rw cuando entre half
 	string line = "";
 		
 	for (int rw = 0; rw < rows; rw++)
 	{
+		//TODO: ACOMODAR PARA QUE SOLO SE INSERTEN LA MITDAD DE LOS BLOQUES CUANDO SE NECESITEN,VER EL README.
 		for (int br = 0; br < bricks; br++)
 		{
-			if (com)
-			{
-				line.append(full,2);
-				com = false;
-			}
-			else
-			{
-				if (hlf)
-				{
-					line.push_back(half);
-					hlf = false;
-				}
-				else
-				{
-					line.push_back(half);
-					--br;
-					hlf = true;
-				}
-
-				com = true;
-			}
+			line.append(full,2);
 			line.push_back(mort);
-		}		
-		cout << line << "\n";
-		line.clear();
-	}
+		}
+		if (comLine)
+		{
+			cout << line << "\n";
+		}
+		else
+		{
+			line.append(full, 2);
+			line.erase(0, 1); // To erase a half block from the begining, to erase 0 to 1.
+			line.erase(line.end() - 2); //To erase using end iterator -2;
+			line.push_back(mort);
+			cout << line << "\n";
+		}
+		
+		comLine = !comLine;
+		line.clear();	
+
+	}		
 }

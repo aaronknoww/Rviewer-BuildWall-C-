@@ -6,13 +6,6 @@
 using namespace std;
 int main()
 {
-    Build par(2, 4);
-    
-    char blc = 220;
-    char blc2 = 254;
-    std::cout << "Hello World!\n";
-
-    cout << blc<<blc<<endl;
-    cout << blc2<<blc2<<endl;
+    Build par(100, 50);
 }   
 
